@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    background-color: whitesmoke;
+    /* padding: 15px 0; */
+    color: #333;
+    height: 1%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 29px;
+}
+
+.logo img {
+    height: 50px; /* Adjust the height as needed */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    /* background-color: red; */
+    width: 70%;
+    justify-content: space-around;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-links li {
+    margin-right: 20px;
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 100px;
+}
+
+/* Style the sub-menus */
+.sub-links {
+    display: none;
+    position: absolute;
+    /* margin-top: 10px;  */
+    top: 100%;
+    left: 0;
+    background-color: whitesmoke;
+    z-index: 5;
+    color: black;
+    opacity: 0;
+    visibility: hidden;
+    /* transition: opacity 4s ease-in; */
+}
+
+/* Show sub-links when hovering over the main navigation links */
+
+
+.sub-links li {
+    width: 200px; /* Adjust the width as needed */
+    padding: 10px;
+    text-align: left;
+    /* transition: background-color 0.3s ease-in-out; */
+}
+
+.sub-links li a {
+    color: black;
+    font-size: 16px;
+}
+
+.nav-links li:hover .sub-links {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Style sub-sub-menus (nested) */
+.sub-sub-links {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: whitesmoke;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.sub-sub-links li {
+    /* background: red; */
+    width: 100%;
+    padding: 10px ;
+}
+
+.sub-links li:hover .sub-sub-links {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Style sub-sub-sub-menus (nested deeper) */
+.sub-sub-sub-links {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: whitesmoke;
+    z-index: 3;
+    /* color: green; */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.sub-sub-sub-links li a {
+    color: black;
+}
+
+.sub-sub-links li:hover .sub-sub-sub-links {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin-right: 0;
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+    .nav-links li:hover .sub-links,
+    .sub-links li:hover .sub-sub-links,
+    .sub-sub-links li:hover .sub-sub-sub-links {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+
+/* Hero Section */
+
+/* Customize the slider container */
+.swiper-container {
+    z-index: 0;
+    width: 100%;
+    height: 90vh;
+    max-width: 100%; /*Adjust the maximum width as needed */
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Style for the swiper-wrapper */
+.swiper-wrapper {
+    width: 100%;
+    height: 100%; /* Set the height to 100% to match the container */
+    position: relative; /* Needed for absolute positioning of text */
+}
+
+/* Style for the slide text overlay */
+.slide-text {
+    /* background: rgb(176, 173, 173); */
+    position: absolute;
+    bottom: 200px; /* Vertically center the text */
+    left: 20px; /* Horizontally center the text */
+    padding: 10px;
+    font-size: 4rem; /* Adjust the font size as needed */
+    font-weight: bold;
+    color: #fff; /* Text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional text shadow */
+    z-index: 2; /* Place text above the image */
+}
+
+/* Style for the pagination */
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+
+
+/* Add a semi-transparent overlay to darken the images */
+.swiper-slide {
+    position: relative;
+}
+
+.swiper-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the opacity (0.5 for 50% darkness) */
+    z-index: 1;
+}
+
+/* Style for the image */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+}
+
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Optional: Style for navigation arrows */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff;
+    font-size: 24px;
+}
+
+
+.section {
+    padding: 10px 30px;
+    height: 400px;
+}
+
+
+
+/* Footer Styling */
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 3px solid green; */
+    padding: 20px 0;
+}
+
+.site-footer .footer-logo {
+    /* border: 2px solid red; */
+    width: 20%;
+    padding: 10px 30px;
+}
+
+.site-footer .footer-logo img {
+    width: 100px;
+}
+
+.site-footer .footer-links {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    /* border: 2px solid red; */
+    width: 70%;
+}
+
+.site-footer .footer-links h4 {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.site-footer .footer-links a p {
+    font-size: 17px;
+    color: gray;
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+.site-footer .footer-links a p:hover {
+    transform: translateX(9px);
+}
